@@ -1,16 +1,16 @@
 package ie.tudublin;
 
+import processing.data.TableRow;
+
 public class Note {
-    private char note;
+    private String note;
     private int duration;
-    @Override
-    public String toString() {
-        return "Note [duration=" + duration + ", note=" + note + "]";
-    }
-    public char getNote() {
+    private String Type;
+    
+    public String getNote() {
         return note;
     }
-    public void setNote(char note) {
+    public void setNote(String note) {
         this.note = note;
     }
     public int getDuration() {
@@ -19,9 +19,26 @@ public class Note {
     public void setDuration(int duration) {
         this.duration = duration;
     }
-    public Note(char note, int duration) {
+    public String getType() {
+        return Type;
+    }
+    public void setType(String type) {
+        Type = type;
+    }
+    public Note(String note, int duration, String type) {
         this.note = note;
         this.duration = duration;
+        this.Type = type;
+    }
+    @Override
+    public String toString() {
+        return "Note [Type=" + Type + ", duration=" + duration + ", note=" + note + "]";
+    }
+
+    public Note(TableRow r)
+    {
+        this(r.getString("note"),r.getInt("duration"),r.getString("Type"));
     }
     
+
 }
